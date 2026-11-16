@@ -21,9 +21,9 @@ describe("SEO URLs", () => {
     const head = pageMeta("/contact", "pt", "Contactos", "Descrição");
     const canonical = head.links.find((link) => link.rel === "canonical");
 
-    expect(canonical?.href).toBe("https://lucas-botelho.github.io/moveis-machado/contact/?lang=pt");
+    expect(canonical?.href).toBe("https://lucas-botelho.github.io/moveis-machado/contact/");
     expect(createSitemapXml()).toContain(
-      "<loc>https://lucas-botelho.github.io/moveis-machado/contact/?lang=pt</loc>",
+      "<loc>https://lucas-botelho.github.io/moveis-machado/contact/</loc>",
     );
     expect(createRobotsTxt()).toContain(
       "Sitemap: https://lucas-botelho.github.io/moveis-machado/sitemap.xml",
@@ -35,7 +35,7 @@ describe("SEO URLs", () => {
       "https://example.com/moveis-machado",
     );
     expect(buildLanguageUrl("/contact", "en", "https://example.com/moveis-machado/")).toBe(
-      "https://example.com/moveis-machado/contact/?lang=en",
+      "https://example.com/moveis-machado/contact/",
     );
   });
 
@@ -44,17 +44,17 @@ describe("SEO URLs", () => {
     const canonical = head.links.find((link) => link.rel === "canonical");
     const alternates = buildLanguageAlternates("/contact", DEFAULT_SITE_URL);
 
-    expect(canonical?.href).toBe(`${DEFAULT_SITE_URL}/contact/?lang=pt`);
+    expect(canonical?.href).toBe(`${DEFAULT_SITE_URL}/contact/`);
     expect(alternates).toEqual([
       {
         rel: "alternate",
         hrefLang: "pt-PT",
-        href: `${DEFAULT_SITE_URL}/contact/?lang=pt`,
+        href: `${DEFAULT_SITE_URL}/contact/`,
       },
       {
         rel: "alternate",
         hrefLang: "x-default",
-        href: `${DEFAULT_SITE_URL}/contact/?lang=pt`,
+        href: `${DEFAULT_SITE_URL}/contact/`,
       },
     ]);
   });
@@ -69,7 +69,7 @@ describe("SEO discovery files", () => {
     expect(html).toContain("Não encontrámos esta página.");
     expect(html).not.toContain("?lang=en");
     expect(html.match(/<h1\b/g)).toHaveLength(1);
-    expect(html).toContain('href="/moveis-machado/?lang=pt"');
+    expect(html).toContain('href="/moveis-machado/"');
     expect(html).toContain('href="/moveis-machado/assets/site.css"');
     expect(html).toContain('name="robots" content="noindex, follow"');
   });
@@ -81,7 +81,7 @@ describe("SEO discovery files", () => {
 
     expect(locations).toHaveLength(PUBLIC_PATHS.length * SEO_LANGUAGES.length);
     expect(languageLinks).toHaveLength(PUBLIC_PATHS.length * SEO_LANGUAGES.length * 2);
-    expect(sitemap).toContain("https://example.com/services/?lang=pt");
+    expect(sitemap).toContain("https://example.com/services/");
     expect(sitemap).not.toContain("lang=en");
     expect(sitemap).not.toContain("/services/kitchens");
     expect(sitemap).not.toContain("/pt?");
@@ -99,10 +99,10 @@ describe("SEO discovery files", () => {
 describe("legacy Portuguese URL", () => {
   it("redirects root and base-path /pt URLs to the canonical Portuguese query", () => {
     expect(getLegacyPortugueseRedirectUrl("https://example.com/pt")).toBe(
-      "https://example.com/?lang=pt",
+      "https://example.com/",
     );
     expect(getLegacyPortugueseRedirectUrl("https://example.com/moveis-machado/pt/")).toBe(
-      "https://example.com/moveis-machado/?lang=pt",
+      "https://example.com/moveis-machado/",
     );
     expect(getLegacyPortugueseRedirectUrl("https://example.com/projects?lang=pt")).toBeUndefined();
   });

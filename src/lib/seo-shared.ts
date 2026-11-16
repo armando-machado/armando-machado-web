@@ -44,7 +44,7 @@ export function buildLanguageUrl(
   // Static hosting serves every page as a directory index and redirects
   // "/about" to "/about/", so canonical URLs always end with a slash.
   base.pathname = `${basePath}${pagePath}/`;
-  base.search = new URLSearchParams({ lang: language }).toString();
+  base.search = "";
   return base.toString();
 }
 
@@ -131,7 +131,7 @@ export function createNotFoundHtml(basePath = "", stylesheetPath = ""): string {
         <p class="not-found-code" aria-hidden="true">404</p>
         <h1 id="not-found-title">${escapeHtml(notFoundContent.pt.title)}</h1>
         <p id="not-found-description">${escapeHtml(notFoundContent.pt.description)}</p>
-        <a class="not-found-action" id="not-found-action" href="${prefix}/?lang=pt">${escapeHtml(notFoundContent.pt.action)}</a>
+        <a class="not-found-action" id="not-found-action" href="${prefix}/">${escapeHtml(notFoundContent.pt.action)}</a>
       </div>
     </main>
   </body>
@@ -147,7 +147,7 @@ export function getLegacyPortugueseRedirectUrl(requestUrl: string): string | und
 
   const deploymentBase = pathname.slice(0, -3);
   url.pathname = deploymentBase ? `${deploymentBase}/` : "/";
-  url.search = new URLSearchParams({ lang: "pt" }).toString();
+  url.search = "";
   url.hash = "";
   return url.toString();
 }

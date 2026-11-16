@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { createRouter, defaultStringifySearch, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
@@ -21,6 +21,7 @@ describe("App routing", () => {
     const router = createRouter({
       routeTree,
       basepath: "/moveis-machado",
+      stringifySearch: (search) => defaultStringifySearch({ ...search, lang: undefined }),
       context: { queryClient: new QueryClient() },
     });
 
@@ -28,7 +29,7 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).toBe("/pt");
     expect(router.buildLocation({ to: "/pt", search: { lang: "pt" } }).href).toBe(
-      "/moveis-machado/pt?lang=pt",
+      "/moveis-machado/pt",
     );
   });
 
@@ -44,12 +45,16 @@ describe("App routing", () => {
     expect(router.matchRoutes(path).at(-1)?.routeId).not.toBe(path);
   });
 
-  it("matches the cookie policy and preserves the selected language", () => {
-    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+  it("matches the cookie policy and keeps ?lang out of the URL", () => {
+    const router = createRouter({
+      routeTree,
+      stringifySearch: (search) => defaultStringifySearch({ ...search, lang: undefined }),
+      context: { queryClient: new QueryClient() },
+    });
 
     expect(router.matchRoutes("/cookies").at(-1)?.routeId).toBe("/cookies");
     expect(router.buildLocation({ to: "/cookies", search: { lang: "en" } }).href).toBe(
-      "/cookies?lang=en",
+      "/cookies",
     );
   });
 });
