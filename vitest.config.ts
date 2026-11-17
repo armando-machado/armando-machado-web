@@ -1,9 +1,10 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
+import { imageSizePlugin } from "./build/image-size";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [imageSizePlugin(), react()],
   test: {
     environment: "jsdom",
     globals: true,

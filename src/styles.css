@@ -1500,11 +1500,6 @@ dd {
 .service-item:hover .service-arrow {
   transform: translateX(4px);
 }
-.services-extra {
-  margin: 0 0 22px;
-  font-size: var(--text-small);
-  color: var(--muted-foreground);
-}
 /* Projects */
 .project-image-button img {
   aspect-ratio: 1.25;

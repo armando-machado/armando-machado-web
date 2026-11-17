@@ -1,16 +1,6 @@
-import walnut from "@/assets/kitchen-walnut.webp";
-import island from "@/assets/kitchen-island.webp";
 import contemporary from "@/assets/kitchen-contemporary.webp";
-import marbleIsland from "@/assets/projects/marble-island.webp";
-import marbleColumns from "@/assets/projects/marble-columns.webp";
-import oakGalley from "@/assets/projects/oak-galley.webp";
-import whiteL from "@/assets/projects/white-l.webp";
-import oakWaterfallIsland from "@/assets/projects/oak-waterfall-island.webp";
-import oakWaterfallColumns from "@/assets/projects/oak-waterfall-columns.webp";
-import oakWaterfallPeninsula from "@/assets/projects/oak-waterfall-peninsula.webp";
 import wineWall from "@/assets/projects/wine-wall.webp";
 import wineWall3d from "@/assets/projects/wine-wall-3d.webp";
-import wineWall3dAlt from "@/assets/projects/wine-wall-3d-alt.webp";
 import laundryKitchenDrawing from "@/assets/projects/laundry-kitchen-drawing.webp";
 import laundryKitchen3d from "@/assets/projects/laundry-kitchen-3d.webp";
 import marbleSwatch from "@/assets/materials/marble.webp";
@@ -18,12 +8,13 @@ import oakSwatch from "@/assets/materials/oak.webp";
 import walnutSwatch from "@/assets/materials/walnut.webp";
 import blackLacquerSwatch from "@/assets/materials/black-lacquer.webp";
 import whiteGlossSwatch from "@/assets/materials/white-gloss.webp";
+import projectData from "@/content/projects.json";
 import { createPageHead } from "@/lib/seo";
 import { notFoundContent } from "@/lib/not-found-content";
 import type { PublicPath, SeoLanguage } from "@/lib/seo-shared";
 
 export type Language = SeoLanguage;
-export const serviceSlugs = ["kitchens", "wardrobes", "furniture"] as const;
+export const serviceSlugs = ["kitchens", "wardrobes", "furniture", "renovations"] as const;
 export type ServiceSlug = (typeof serviceSlugs)[number];
 
 /*
@@ -51,175 +42,72 @@ export type Project = {
   en: ProjectCopy;
 };
 
-export const projects: readonly Project[] = [
-  {
-    slug: "oak-waterfall",
-    category: "kitchen",
-    images: [
-      { src: oakWaterfallIsland, width: 1024, height: 768, kind: "photo" },
-      { src: oakWaterfallColumns, width: 1024, height: 768, kind: "photo" },
-      { src: oakWaterfallPeninsula, width: 1024, height: 768, kind: "photo" },
-    ],
-    pt: {
-      title: "Madeira e ilha efeito mármore",
-      type: "Cozinha com ilha",
-      materials: "Colunas em madeira · branco mate · bancada efeito mármore",
-      summary:
-        "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada.",
-    },
-    en: {
-      title: "Wood and marble-effect island",
-      type: "Island kitchen",
-      materials: "Wood tall units · matt white · marble-effect worktop",
-      summary:
-        "A wall of wood tall units brings together a double oven, an American fridge and a wine cooler. Opposite, a white island whose marble-effect worktop runs down to the floor, with an integrated hob.",
-    },
-  },
-  {
-    slug: "walnut",
-    category: "kitchen",
-    images: [{ src: walnut, width: 1600, height: 1200, kind: "photo" }],
-    pt: {
-      title: "Branco e nogueira",
-      type: "Cozinha em L",
-      materials: "Branco mate · nogueira · bancada escura",
-      summary:
-        "Uma cozinha em L que junta a luz das frentes brancas ao calor da nogueira, com armários superiores em duas profundidades.",
-    },
-    en: {
-      title: "White and walnut",
-      type: "L-shaped kitchen",
-      materials: "Matt white · walnut · dark worktop",
-      summary:
-        "An L-shaped kitchen pairing bright white fronts with warm walnut, with wall units in two depths.",
-    },
-  },
-  {
-    slug: "contemporary",
-    category: "kitchen",
-    images: [{ src: contemporary, width: 1600, height: 1200, kind: "photo" }],
-    pt: {
-      title: "Lacado preto e branco",
-      type: "Cozinha contemporânea",
-      materials: "MDF lacado alto brilho · puxador integrado",
-      summary:
-        "Linhas contínuas, puxador integrado e o contraste do lacado preto e branco em alto brilho.",
-    },
-    en: {
-      title: "Black and white lacquer",
-      type: "Contemporary kitchen",
-      materials: "High-gloss lacquered MDF · integrated handle",
-      summary:
-        "Continuous lines, an integrated handle and the contrast of black and white high-gloss lacquer.",
-    },
-  },
-  {
-    slug: "island",
-    category: "kitchen",
-    images: [{ src: island, width: 1600, height: 1200, kind: "photo" }],
-    pt: {
-      title: "Ilha em tom pedra",
-      type: "Cozinha com ilha",
-      materials: "Branco mate · ilha em tom pedra · madeira",
-      summary: "Uma ilha robusta em tom pedra que organiza a cozinha e abre o espaço para a sala.",
-    },
-    en: {
-      title: "Stone-tone island",
-      type: "Island kitchen",
-      materials: "Matt white · stone-tone island · wood",
-      summary:
-        "A solid stone-tone island that organises the kitchen and opens it to the living area.",
-    },
-  },
-  {
-    slug: "oak-galley",
-    category: "kitchen",
-    images: [{ src: oakGalley, width: 1200, height: 1488, kind: "photo" }],
-    pt: {
-      title: "Corredor em branco e madeira",
-      type: "Cozinha linear",
-      materials: "Lacado branco · madeira · bancada escura",
-      summary:
-        "Uma cozinha linear que aproveita todo o comprimento do espaço, com gavetões, eletrodomésticos encastrados e uma faixa de madeira a aquecer o conjunto.",
-    },
-    en: {
-      title: "White and wood galley",
-      type: "Galley kitchen",
-      materials: "White lacquer · wood · dark worktop",
-      summary:
-        "A galley kitchen that uses the full length of the room, with deep drawers, built-in appliances and a band of wood warming the whole.",
-    },
-  },
-  {
-    slug: "white-l",
-    category: "kitchen",
-    images: [{ src: whiteL, width: 1600, height: 1164, kind: "photo" }],
-    pt: {
-      title: "Branco mate com coluna",
-      type: "Cozinha em L",
-      materials: "Branco mate · bancada escura · eletrodomésticos encastrados",
-      summary:
-        "Frentes em branco mate sem puxadores aparentes, coluna até ao teto e eletrodomésticos encastrados à altura certa.",
-    },
-    en: {
-      title: "Matt white with tall unit",
-      type: "L-shaped kitchen",
-      materials: "Matt white · dark worktop · built-in appliances",
-      summary:
-        "Matt white handleless fronts, a floor-to-ceiling tall unit and built-in appliances at the right height.",
-    },
-  },
-  {
-    slug: "marble-island",
-    category: "kitchen",
-    images: [
-      { src: marbleIsland, width: 1600, height: 1032, kind: "photo" },
-      { src: marbleColumns, width: 1600, height: 1032, kind: "photo" },
-    ],
-    pt: {
-      title: "Ilha e revestimento efeito mármore",
-      type: "Cozinha com ilha",
-      materials: "Lacado branco alto brilho · bancada e revestimento efeito mármore",
-      summary:
-        "Armários altos até ao teto, frentes sem puxadores e uma ilha com placa integrada. As colunas reúnem forno duplo e frigorífico americano numa só parede.",
-    },
-    en: {
-      title: "Island and marble-effect surfaces",
-      type: "Island kitchen",
-      materials: "White high-gloss lacquer · marble-effect worktop and splashback",
-      summary:
-        "Wall units up to the ceiling, handleless fronts and an island with an integrated hob. Tall units bring a double oven and an American fridge together on one wall.",
-    },
-  },
-  {
-    slug: "wine-wall",
-    category: "furniture",
-    images: [
-      { src: wineWall, width: 1600, height: 1104, kind: "photo" },
-      { src: wineWall3d, width: 1600, height: 1132, kind: "render" },
-      { src: wineWall3dAlt, width: 1600, height: 1132, kind: "render" },
-    ],
-    pt: {
-      title: "Garrafeira à medida",
-      type: "Mobiliário por medida",
-      materials: "Perfis pretos com vidro · madeira · garrafeiras em cruz",
-      summary:
-        "Uma parede inteira de arrumação para vinho, com portas em vidro, nichos em cruz e espaço para uma garrafeira climatizada. Foi desenhada em 3D antes de seguir para a fábrica.",
-    },
-    en: {
-      title: "Bespoke wine wall",
-      type: "Bespoke furniture",
-      materials: "Black frames with glass · wood · cross-shaped wine racks",
-      summary:
-        "A full wall of wine storage with glass doors, cross racks and room for a wine cooler. It was designed in 3D before going to the workshop.",
-    },
-  },
-];
+type ImageSize = Omit<ProjectImage, "kind">;
 
+/*
+ * Projects are edited by the company through the CMS at /admin, which commits
+ * src/content/projects.json and uploads photos to src/content/projects/images.
+ * A malformed entry fails the build, so a bad edit never reaches the live site.
+ */
+export function loadProjects(data: unknown, images: Record<string, ImageSize>): Project[] {
+  const list = (data as { projects?: unknown } | null)?.projects;
+  if (!Array.isArray(list)) throw new Error("projects.json: missing projects list");
+  const text = (value: unknown, where: string) => {
+    if (typeof value !== "string" || !value.trim())
+      throw new Error(`projects.json: ${where} is empty`);
+    return value.trim();
+  };
+  const copy = (value: unknown, where: string): ProjectCopy => {
+    const c = (value ?? {}) as Record<string, unknown>;
+    return {
+      title: text(c["title"], `${where}.title`),
+      type: text(c["type"], `${where}.type`),
+      materials: text(c["materials"], `${where}.materials`),
+      summary: text(c["summary"], `${where}.summary`),
+    };
+  };
+  const seen = new Set<string>();
+  return list.map((entry: Record<string, unknown>, i) => {
+    const slug = text(entry["slug"], `project ${i + 1} slug`);
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug))
+      throw new Error(`projects.json: bad slug "${slug}"`);
+    if (seen.has(slug)) throw new Error(`projects.json: duplicate slug "${slug}"`);
+    seen.add(slug);
+    const category = entry["category"];
+    if (category !== "kitchen" && category !== "furniture") {
+      throw new Error(`projects.json: ${slug} has unknown category "${String(category)}"`);
+    }
+    const rawImages = entry["images"];
+    if (!Array.isArray(rawImages) || rawImages.length === 0) {
+      throw new Error(`projects.json: ${slug} needs at least one image`);
+    }
+    return {
+      slug,
+      category,
+      images: rawImages.map((image: Record<string, unknown>) => {
+        const size = images[String(image["src"])];
+        if (!size)
+          throw new Error(`projects.json: ${slug} image not found: ${String(image["src"])}`);
+        return { ...size, kind: image["kind"] === "render" ? "render" : "photo" } as const;
+      }),
+      pt: copy(entry["pt"], `${slug}.pt`),
+      en: copy(entry["en"], `${slug}.en`),
+    };
+  });
+}
+
+export const projects: readonly Project[] = loadProjects(
+  projectData,
+  import.meta.glob<ImageSize>("/src/content/projects/images/*.webp", {
+    eager: true,
+    query: "?size",
+    import: "default",
+  }),
+);
+
+/** Undefined when the company has removed the project in the CMS. */
 export function projectBySlug(slug: string) {
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) throw new Error(`Unknown project: ${slug}`);
-  return project;
+  return projects.find((p) => p.slug === slug);
 }
 
 export const designToWork = {
@@ -283,7 +171,7 @@ export const content = {
     heroTitle: "Cozinhas para a sua casa.",
     heroItalic: "Feitas á sua medida.",
     heroDescription:
-      "Há mais de 40 anos que desenhamos, fabricamos e instalamos cozinhas, armários e móveis por medida em Odivelas e na Grande Lisboa.",
+      "Há mais de 40 anos que desenhamos, fabricamos e instalamos cozinhas, armários e móveis por medida em Odivelas e na Grande Lisboa. Também fazemos remodelações completas.",
     heroPrimary: "Pedir orçamento gratuito",
     explore: "Ver projetos",
     heroImageLabel: "Projeto real Armando Machado",
@@ -296,18 +184,19 @@ export const content = {
     servicesLabel: "O QUE FAZEMOS",
     servicesTitle: "Feito à medida, do chão ao teto.",
     servicesLink: "Ver todos os serviços",
-    services: ["Cozinhas por medida", "Armários por medida", "Móveis por medida"],
+    services: ["Cozinhas por medida", "Armários por medida", "Móveis por medida", "Remodelações"],
     serviceShort: [
       "Cozinhas desenhadas ao centímetro, com eletrodomésticos encastrados e ferragens de fecho suave.",
       "Armários do chão ao teto, com o interior organizado para o que guarda.",
       "Móveis de sala, escritórios, garrafeiras e portas interiores feitos para o seu espaço.",
+      "Remodelações completas de casas e espaços, do projeto à obra acabada.",
     ],
     serviceLong: [
       "Desenhamos cada cozinha a partir das medidas reais da sua casa e da forma como cozinha. Estruturas reforçadas, ferragens de fecho suave, eletrodomésticos encastrados e acabamentos à escolha.",
       "Armários que vão do chão ao teto, contornam paredes irregulares e organizam o interior com prateleiras, gavetas e divisórias na proporção certa.",
-      "Móveis de sala, estantes, escritórios, garrafeiras e portas interiores, desenhados para o lugar onde vão ficar. Também fazemos remodelações.",
+      "Móveis de sala, estantes, escritórios, garrafeiras e portas interiores, desenhados para o lugar onde vão ficar.",
+      "Fazemos remodelações em geral, de uma divisão à casa inteira, com a mesma equipa que desenha e fabrica os seus móveis.",
     ],
-    servicesExtra: "Também fazemos portas interiores e remodelações.",
     projectsLabel: "PROJETOS REAIS",
     projectsTitle: "Os nossos trabalhos",
     projectsLink: "Ver todos os projetos",
@@ -357,8 +246,7 @@ export const content = {
     ],
     materialsLabel: "MATERIAIS",
     materialsTitle: "Materiais que escolhemos consigo.",
-    materialsIntro:
-      "Amostras retiradas de cozinhas que fabricámos.",
+    materialsIntro: "Amostras retiradas de cozinhas que fabricámos.",
     processLabel: "COMO TRABALHAMOS",
     processTitle: "Quatro passos, uma só equipa.",
     steps: ["Visita", "Projeto 3D e orçamento", "Fabrico", "Instalação"],
@@ -437,7 +325,7 @@ export const content = {
     heroTitle: "Bespoke kitchens.",
     heroItalic: "Made in our own workshop.",
     heroDescription:
-      "For over 40 years we have designed, made and installed kitchens, cabinets and furniture to measure across Lisbon and Greater Lisbon.",
+      "For over 40 years we have designed, made and installed kitchens, cabinets and furniture to measure across Lisbon and Greater Lisbon. We also carry out full renovations.",
     heroPrimary: "Request a free quote",
     explore: "View projects",
     heroImageLabel: "A real Armando Machado project",
@@ -450,18 +338,19 @@ export const content = {
     servicesLabel: "WHAT WE DO",
     servicesTitle: "Made to measure, floor to ceiling.",
     servicesLink: "View all services",
-    services: ["Bespoke kitchens", "Bespoke cabinets", "Bespoke furniture"],
+    services: ["Bespoke kitchens", "Bespoke cabinets", "Bespoke furniture", "Renovations"],
     serviceShort: [
       "Kitchens designed to the centimetre, with built-in appliances and soft-close fittings.",
       "Floor-to-ceiling cabinets, organised inside for what you keep.",
       "Living room units, offices, wine walls and interior doors made for your space.",
+      "Full renovations of homes and spaces, from design to finished work.",
     ],
     serviceLong: [
       "We design each kitchen from the real measurements of your home and the way you cook. Reinforced carcasses, soft-close fittings, built-in appliances and finishes of your choice.",
       "Cabinets that run floor to ceiling, work around uneven walls and organise the interior with shelves, drawers and dividers in the right proportions.",
-      "Living room units, shelving, home offices, wine walls and interior doors, designed for the place they will live in. We also handle renovations.",
+      "Living room units, shelving, home offices, wine walls and interior doors, designed for the place they will live in.",
+      "We carry out general renovations, from a single room to a whole home, with the same team that designs and makes your furniture.",
     ],
-    servicesExtra: "We also make interior doors and handle renovations.",
     projectsLabel: "REAL PROJECTS",
     projectsTitle: "Our work",
     projectsLink: "View all projects",

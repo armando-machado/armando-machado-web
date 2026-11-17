@@ -133,7 +133,7 @@ export function Hero() {
       <section className="hero">
         <LazyImage
           src={heroImage.src}
-          alt={featured[lang].title}
+          alt={featured?.[lang].title ?? t.heroImageLabel}
           width={heroImage.width}
           height={heroImage.height}
           loading="eager"
@@ -191,7 +191,7 @@ export function ServicesPreview() {
       <figure className="services-visual">
         <LazyImage
           src={whiteL}
-          alt={projectBySlug("white-l")[lang].title}
+          alt={projectBySlug("white-l")?.[lang].title ?? t.heroImageLabel}
           loading="lazy"
           width={1600}
           height={1164}
@@ -210,7 +210,6 @@ export function ServicesPreview() {
             </Link>
           ))}
         </div>
-        <p className="services-extra">{t.servicesExtra}</p>
         <Link to="/services" search={{ lang }} className="text-link">
           {t.servicesLink}
         </Link>
@@ -500,7 +499,7 @@ export function DesignToWork() {
         <figure>
           <LazyImage
             src={designToWork.render.src}
-            alt={`${project[lang].title}: ${t.designRenderCaption}`}
+            alt={`${project?.[lang].title ?? t.heroImageLabel}: ${t.designRenderCaption}`}
             loading="lazy"
             width={designToWork.render.width}
             height={designToWork.render.height}
@@ -513,7 +512,7 @@ export function DesignToWork() {
         <figure>
           <LazyImage
             src={designToWork.photo.src}
-            alt={`${project[lang].title}: ${t.designPhotoCaption}`}
+            alt={`${project?.[lang].title ?? t.heroImageLabel}: ${t.designPhotoCaption}`}
             loading="lazy"
             width={designToWork.photo.width}
             height={designToWork.photo.height}
@@ -546,7 +545,7 @@ export function Story({ full = false, light = false }: { full?: boolean; light?:
         <LazyImage
           className="story-image"
           src={kitchenIsland}
-          alt={projectBySlug("island")[lang].title}
+          alt={projectBySlug("island")?.[lang].title ?? t.heroImageLabel}
           loading="lazy"
           width={1600}
           height={1200}

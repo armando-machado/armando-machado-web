@@ -1,0 +1,84 @@
+# Sveltia CMS: the company edits projects here; each save is a commit to main,
+# and Vercel publishes it in a couple of minutes. Only GitHub accounts with
+# write access to the repository can sign in.
+backend:
+  name: github
+  repo: lucas-botelho/moveis-machado
+  branch: main
+  commit_messages:
+    update: "Atualizar projetos (CMS)"
+    uploadMedia: "Carregar fotografia {{path}} (CMS)"
+    deleteMedia: "Apagar fotografia {{path}} (CMS)"
+
+# Must match the import.meta.glob in src/lib/site-content.ts.
+media_folder: src/content/projects/images
+public_folder: /src/content/projects/images
+
+media_libraries:
+  default:
+    config:
+      # Phone photos are converted to WebP and resized in the browser before upload.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2048
+          height: 2048
+
+collections:
+  - name: content
+    label: Conteúdo
+    files:
+      - name: projects
+        label: Projetos
+        file: src/content/projects.json
+        format: json
+        fields:
+          - name: projects
+            label: Projetos
+            label_singular: Projeto
+            widget: list
+            summary: "{{fields.slug}}"
+            hint: Arraste para mudar a ordem. Use o botão de remover para apagar um projeto e depois guarde.
+            fields:
+              - name: slug
+                label: Identificador
+                widget: string
+                hint: Curto e único, só letras minúsculas, números e hífenes (ex. cozinha-carvalho).
+                pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Só letras minúsculas, números e hífenes"]
+              - name: category
+                label: Categoria
+                widget: select
+                options:
+                  - { label: Cozinha, value: kitchen }
+                  - { label: Mobiliário, value: furniture }
+              - name: images
+                label: Fotografias
+                label_singular: Fotografia
+                widget: list
+                min: 1
+                hint: A primeira fotografia é a capa. Use só fotografias de obras reais; marque desenhos 3D como "Desenho 3D".
+                fields:
+                  - name: src
+                    label: Imagem
+                    widget: image
+                    accept: image/jpeg,image/png,image/webp
+                  - name: kind
+                    label: Tipo
+                    widget: select
+                    default: photo
+                    options:
+                      - { label: Fotografia da obra, value: photo }
+                      - { label: Desenho 3D, value: render }
+              - name: pt
+                label: Português
+                widget: object
+                fields: &copy
+                  - { name: title, label: Título, widget: string }
+                  - { name: type, label: Tipo de projeto, widget: string }
+                  - { name: materials, label: Materiais, widget: string }
+                  - { name: summary, label: Descrição, widget: text }
+              - name: en
+                label: English
+                widget: object
+                fields: *copy

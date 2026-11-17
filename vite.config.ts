@@ -4,6 +4,7 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { seoFilesPlugin } from "./build/seo-files";
+import { imageSizePlugin } from "./build/image-size";
 
 const pagesBasePath = process.env["PAGES_BASE_PATH"]?.replace(/\/+$/, "") ?? "";
 const publicBase = pagesBasePath ? `${pagesBasePath}/` : "/";
@@ -43,6 +44,19 @@ export default defineConfig({
   },
   server: { host: "::", port: 8080 },
   plugins: [
+    {
+      // Vercel serves public/admin/index.html at /admin; the dev server would hand it to the router.
+      name: "moveis-machado-admin-index",
+      configureServer(server) {
+        server.middlewares.use((request, _response, next) => {
+          if (request.url === "/admin" || request.url === "/admin/") {
+            request.url = "/admin/index.html";
+          }
+          next();
+        });
+      },
+    },
+    imageSizePlugin(),
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
