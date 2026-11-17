@@ -3,7 +3,7 @@
 # write access to the repository can sign in.
 backend:
   name: github
-  repo: lucas-botelho/moveis-machado
+  repo: armando-machado/armando-machado-web
   branch: main
   commit_messages:
     update: "Atualizar projetos (CMS)"
