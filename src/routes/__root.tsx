@@ -26,7 +26,7 @@ function NotFoundComponent() {
   const language = useRouterState({
     select: (state) => resolveLanguage(state.location.search.lang),
   });
-  const copy = language === "pt" ? content.pt.notFound : content.en.notFound;
+  const copy = content.pt.notFound;
 
   return (
     <main className="not-found-page" id="main-content">
@@ -116,7 +116,7 @@ function RootShell({ children }: { children: ReactNode }) {
   });
 
   return (
-    <html lang={language === "pt" ? "pt-PT" : "en"}>
+    <html lang={"pt-PT"}>
       <head>
         <HeadContent />
       </head>

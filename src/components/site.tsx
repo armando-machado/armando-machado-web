@@ -63,13 +63,13 @@ export function SiteHeader() {
   const t = content[lang];
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
+    document.documentElement.lang = "pt-PT";
   }, [lang]);
   return (
     <header className="site-header">
       <Brand />
       <nav
-        aria-label={lang === "pt" ? "Navegação principal" : "Main navigation"}
+        aria-label={"Navegação principal"}
         className={`site-navigation ${open ? "is-open" : ""}`}
       >
         {destinations.map((to, i) => (
@@ -98,15 +98,7 @@ export function SiteHeader() {
           variant="ghost"
           size="icon"
           className="menu-toggle"
-          aria-label={
-            open
-              ? lang === "pt"
-                ? "Fechar menu"
-                : "Close menu"
-              : lang === "pt"
-                ? "Abrir menu"
-                : "Open menu"
-          }
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >
@@ -133,7 +125,7 @@ export function Hero() {
       <section className="hero">
         <LazyImage
           src={heroImage.src}
-          alt={featured?.[lang].title ?? t.heroImageLabel}
+          alt={featured?.title ?? t.heroImageLabel}
           width={heroImage.width}
           height={heroImage.height}
           loading="eager"
@@ -191,7 +183,7 @@ export function ServicesPreview() {
       <figure className="services-visual">
         <LazyImage
           src={whiteL}
-          alt={projectBySlug("white-l")?.[lang].title ?? t.heroImageLabel}
+          alt={projectBySlug("white-l")?.title ?? t.heroImageLabel}
           loading="lazy"
           width={1600}
           height={1164}
@@ -247,7 +239,7 @@ function ProjectLightbox({ project, onClose }: { project: Project; onClose: () =
       className="lightbox"
       role="dialog"
       aria-modal="true"
-      aria-label={project[lang].title}
+      aria-label={project.title}
       onClick={onClose}
     >
       <Button
@@ -265,7 +257,7 @@ function ProjectLightbox({ project, onClose }: { project: Project; onClose: () =
           <LazyImage
             key={image.src}
             src={image.src}
-            alt={`${project[lang].title} (${index + 1}/${count})`}
+            alt={`${project.title} (${index + 1}/${count})`}
             loading="eager"
             width={image.width}
             height={image.height}
@@ -296,8 +288,8 @@ function ProjectLightbox({ project, onClose }: { project: Project; onClose: () =
         </div>
         <div className="lightbox-meta">
           <div>
-            <h2>{project[lang].title}</h2>
-            <p>{project[lang].materials}</p>
+            <h2>{project.title}</h2>
+            <p>{project.materials}</p>
           </div>
           {count > 1 && (
             <span>
@@ -305,7 +297,7 @@ function ProjectLightbox({ project, onClose }: { project: Project; onClose: () =
             </span>
           )}
         </div>
-        <p className="lightbox-summary">{project[lang].summary}</p>
+        <p className="lightbox-summary">{project.summary}</p>
       </div>
     </div>
   );
@@ -334,11 +326,11 @@ function ProjectCard({
         variant="ghost"
         className="project-image-button"
         onClick={onOpen}
-        aria-label={`${t.projectView}: ${project[lang].title}`}
+        aria-label={`${t.projectView}: ${project.title}`}
       >
         <LazyImage
           src={cover.src}
-          alt={project[lang].title}
+          alt={project.title}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           width={cover.width}
@@ -349,10 +341,10 @@ function ProjectCard({
         )}
       </Button>
       <div className="project-info">
-        <p className="project-type">{project[lang].type}</p>
-        <Heading>{project[lang].title}</Heading>
-        <p>{project[lang].materials}</p>
-        {detailed && <p className="project-summary">{project[lang].summary}</p>}
+        <p className="project-type">{project.type}</p>
+        <Heading>{project.title}</Heading>
+        <p>{project.materials}</p>
+        {detailed && <p className="project-summary">{project.summary}</p>}
       </div>
     </>
   );
@@ -445,7 +437,7 @@ export function ProjectCarousel({
           variant="ghost"
           size="icon"
           className="project-carousel-button"
-          aria-label={lang === "pt" ? "Projetos anteriores" : "Previous projects"}
+          aria-label={"Projetos anteriores"}
           disabled={!canPrev}
           onClick={() => api?.scrollPrev()}
         >
@@ -455,7 +447,7 @@ export function ProjectCarousel({
           variant="ghost"
           size="icon"
           className="project-carousel-button"
-          aria-label={lang === "pt" ? "Projetos seguintes" : "Next projects"}
+          aria-label={"Projetos seguintes"}
           disabled={!canNext}
           onClick={() => api?.scrollNext()}
         >
@@ -499,7 +491,7 @@ export function DesignToWork() {
         <figure>
           <LazyImage
             src={designToWork.render.src}
-            alt={`${project?.[lang].title ?? t.heroImageLabel}: ${t.designRenderCaption}`}
+            alt={`${project?.title ?? t.heroImageLabel}: ${t.designRenderCaption}`}
             loading="lazy"
             width={designToWork.render.width}
             height={designToWork.render.height}
@@ -512,7 +504,7 @@ export function DesignToWork() {
         <figure>
           <LazyImage
             src={designToWork.photo.src}
-            alt={`${project?.[lang].title ?? t.heroImageLabel}: ${t.designPhotoCaption}`}
+            alt={`${project?.title ?? t.heroImageLabel}: ${t.designPhotoCaption}`}
             loading="lazy"
             width={designToWork.photo.width}
             height={designToWork.photo.height}
@@ -545,7 +537,7 @@ export function Story({ full = false, light = false }: { full?: boolean; light?:
         <LazyImage
           className="story-image"
           src={kitchenIsland}
-          alt={projectBySlug("island")?.[lang].title ?? t.heroImageLabel}
+          alt={projectBySlug("island")?.title ?? t.heroImageLabel}
           loading="lazy"
           width={1600}
           height={1200}
@@ -589,10 +581,10 @@ export function Materials({ compact = false }: { compact?: boolean }) {
       </div>
       <ul className="materials-grid">
         {materials.map((material) => (
-          <li key={material.pt.name}>
+          <li key={material.name}>
             <LazyImage src={material.image} alt="" loading="lazy" width={640} height={640} />
-            <strong>{material[lang].name}</strong>
-            <span>{material[lang].copy}</span>
+            <strong>{material.name}</strong>
+            <span>{material.copy}</span>
           </li>
         ))}
       </ul>

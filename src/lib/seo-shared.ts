@@ -1,6 +1,6 @@
 import { notFoundContent } from "./not-found-content";
 
-export type SeoLanguage = "pt" | "en";
+export type SeoLanguage = "pt";
 
 export const DEFAULT_SITE_URL = "https://lucas-botelho.github.io/moveis-machado";
 
@@ -15,7 +15,6 @@ export const PUBLIC_PATHS = [
 
 export type PublicPath = (typeof PUBLIC_PATHS)[number];
 
-// Portuguese-only for now; add "en" back here when English is re-enabled.
 export const SEO_LANGUAGES = ["pt"] as const satisfies readonly SeoLanguage[];
 
 export function resolveSiteUrl(value?: string): string {

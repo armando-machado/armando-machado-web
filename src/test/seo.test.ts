@@ -34,7 +34,7 @@ describe("SEO URLs", () => {
     expect(resolveSiteUrl("https://example.com/moveis-machado///?ignored=yes#section")).toBe(
       "https://example.com/moveis-machado",
     );
-    expect(buildLanguageUrl("/contact", "en", "https://example.com/moveis-machado/")).toBe(
+    expect(buildLanguageUrl("/contact", "pt", "https://example.com/moveis-machado/")).toBe(
       "https://example.com/moveis-machado/contact/",
     );
   });

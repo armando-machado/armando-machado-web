@@ -72,9 +72,9 @@ function CookiePolicy() {
 
         <aside className="legal-note">
           <p>
-            {lang === "pt"
-              ? "Fontes oficiais consultadas: CNPD, Lei n.º 41/2004 e Regulamento Geral sobre a Proteção de Dados."
-              : "Official sources consulted: CNPD, Portuguese Law no. 41/2004 and the General Data Protection Regulation."}
+            {
+              "Fontes oficiais consultadas: CNPD, Lei n.º 41/2004 e Regulamento Geral sobre a Proteção de Dados."
+            }
           </p>
           <div className="legal-source-links">
             <a

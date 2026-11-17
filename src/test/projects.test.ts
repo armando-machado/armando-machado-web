@@ -5,8 +5,7 @@ const entry = (over: Record<string, unknown> = {}) => ({
   slug: "a",
   category: "kitchen",
   images: [{ src: "/x.webp", kind: "render" }],
-  pt: copy,
-  en: copy,
+  ...copy,
   ...over,
 });
 const images = { "/x.webp": { src: "/assets/x.webp", width: 10, height: 20 } };
@@ -31,7 +30,7 @@ describe("projects from the CMS", () => {
     ["missing image", entry({ images: [{ src: "/gone.webp" }] }), /image not found/],
     ["no images", entry({ images: [] }), /at least one image/],
     ["bad slug", entry({ slug: "Bad Slug" }), /bad slug/],
-    ["empty copy", entry({ en: { ...copy, title: " " } }), /a.en.title is empty/],
+    ["empty copy", entry({ title: " " }), /a.title is empty/],
     ["bad category", entry({ category: "car" }), /unknown category/],
   ])("rejects %s so a bad edit fails the build", (_, bad, error) => {
     expect(() => loadProjects({ projects: [bad] }, images)).toThrow(error);

@@ -22,11 +22,10 @@ const OG_IMAGE = {
   height: "630",
   alt: {
     pt: "Cozinha por medida Armando Machado com lacado branco e revestimento efeito mármore",
-    en: "Armando Machado bespoke kitchen with white lacquer and marble-effect splashback",
   },
 } as const;
 
-const OG_LOCALE = { pt: "pt_PT", en: "en_GB" } as const;
+const OG_LOCALE = { pt: "pt_PT" } as const;
 
 export function createPageHead({
   path,
@@ -81,9 +80,7 @@ export function createBusinessJsonLd(language: Language) {
     logo: publicFileUrl("logo.png"),
     image: OG_IMAGE.url,
     description:
-      language === "pt"
-        ? "Fabrico próprio de cozinhas, roupeiros e móveis por medida em Odivelas, com projeto 3D, instalação e assistência pós-venda na Grande Lisboa."
-        : "Bespoke kitchens, wardrobes and furniture made in our own workshop in Odivelas, with 3D design, installation and after-sales support across Greater Lisbon.",
+      "Fabrico próprio de cozinhas, roupeiros e móveis por medida em Odivelas, com projeto 3D, instalação e assistência pós-venda na Grande Lisboa.",
     telephone: "+351964035260",
     email: "moveismachado@hotmail.com",
     address: {
@@ -99,22 +96,13 @@ export function createBusinessJsonLd(language: Language) {
       { "@type": "City", name: "Odivelas" },
       { "@type": "AdministrativeArea", name: "Grande Lisboa" },
     ],
-    knowsAbout:
-      language === "pt"
-        ? [
-            "Cozinhas por medida",
-            "Roupeiros por medida",
-            "Móveis por medida",
-            "Portas interiores",
-            "Remodelações",
-          ]
-        : [
-            "Bespoke kitchens",
-            "Custom wardrobes",
-            "Bespoke furniture",
-            "Interior doors",
-            "Renovations",
-          ],
+    knowsAbout: [
+      "Cozinhas por medida",
+      "Roupeiros por medida",
+      "Móveis por medida",
+      "Portas interiores",
+      "Remodelações",
+    ],
     sameAs: ["https://www.instagram.com/cozinhasmoveismachado/"],
   };
 

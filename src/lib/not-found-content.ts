@@ -5,10 +5,4 @@ export const notFoundContent = {
     action: "Voltar à página inicial",
     languageLabel: "Português",
   },
-  en: {
-    title: "We couldn't find this page.",
-    description: "The address may be incorrect or the page may no longer exist.",
-    action: "Back to the homepage",
-    languageLabel: "English",
-  },
 } as const;

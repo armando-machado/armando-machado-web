@@ -32,14 +32,14 @@ export type ProjectImage = {
   kind: "photo" | "render";
 };
 
-type ProjectCopy = { title: string; type: string; materials: string; summary: string };
-
 export type Project = {
   slug: string;
   category: "kitchen" | "furniture";
   images: readonly ProjectImage[];
-  pt: ProjectCopy;
-  en: ProjectCopy;
+  title: string;
+  type: string;
+  materials: string;
+  summary: string;
 };
 
 type ImageSize = Omit<ProjectImage, "kind">;
@@ -56,15 +56,6 @@ export function loadProjects(data: unknown, images: Record<string, ImageSize>): 
     if (typeof value !== "string" || !value.trim())
       throw new Error(`projects.json: ${where} is empty`);
     return value.trim();
-  };
-  const copy = (value: unknown, where: string): ProjectCopy => {
-    const c = (value ?? {}) as Record<string, unknown>;
-    return {
-      title: text(c["title"], `${where}.title`),
-      type: text(c["type"], `${where}.type`),
-      materials: text(c["materials"], `${where}.materials`),
-      summary: text(c["summary"], `${where}.summary`),
-    };
   };
   const seen = new Set<string>();
   return list.map((entry: Record<string, unknown>, i) => {
@@ -90,8 +81,10 @@ export function loadProjects(data: unknown, images: Record<string, ImageSize>): 
           throw new Error(`projects.json: ${slug} image not found: ${String(image["src"])}`);
         return { ...size, kind: image["kind"] === "render" ? "render" : "photo" } as const;
       }),
-      pt: copy(entry["pt"], `${slug}.pt`),
-      en: copy(entry["en"], `${slug}.en`),
+      title: text(entry["title"], `${slug}.title`),
+      type: text(entry["type"], `${slug}.type`),
+      materials: text(entry["materials"], `${slug}.materials`),
+      summary: text(entry["summary"], `${slug}.summary`),
     };
   });
 }
@@ -122,41 +115,32 @@ export const heroImage = { src: contemporary, width: 1600, height: 1200 };
 export const materials = [
   {
     image: walnutSwatch,
-    pt: { name: "Madeira", copy: "Carvalho, nogueira e faia, em maciço ou folheado." },
-    en: { name: "Wood", copy: "Oak, walnut and beech, solid or veneered." },
+    name: "Madeira",
+    copy: "Carvalho, nogueira e faia, em maciço ou folheado.",
   },
   {
     image: whiteGlossSwatch,
-    pt: { name: "MDF lacado", copy: "Mate ou alto brilho, na cor que escolher." },
-    en: { name: "Lacquered MDF", copy: "Matt or high gloss, in the colour you choose." },
+    name: "MDF lacado",
+    copy: "Mate ou alto brilho, na cor que escolher.",
   },
   {
     image: oakSwatch,
-    pt: { name: "Laminados técnicos", copy: "Termolaminados resistentes ao uso diário." },
-    en: { name: "Technical laminates", copy: "Thermolaminates made for daily use." },
+    name: "Laminados técnicos",
+    copy: "Termolaminados resistentes ao uso diário.",
   },
   {
     image: marbleSwatch,
-    pt: { name: "Pedra e cerâmica técnica", copy: "Bancadas e revestimentos de veio contínuo." },
-    en: {
-      name: "Stone and technical ceramic",
-      copy: "Worktops and splashbacks with continuous veining.",
-    },
+    name: "Pedra e cerâmica técnica",
+    copy: "Bancadas e revestimentos de veio contínuo.",
   },
   {
     image: blackLacquerSwatch,
-    pt: { name: "Ferragens e acabamentos", copy: "Fecho suave, puxador integrado ou sem puxador." },
-    en: {
-      name: "Hardware and details",
-      copy: "Soft-close fittings, integrated or handleless fronts.",
-    },
+    name: "Ferragens e acabamentos",
+    copy: "Fecho suave, puxador integrado ou sem puxador.",
   },
 ] as const;
 
-/**
- * The site is Portuguese-only for now. English copy is kept in this file so it
- * can be re-enabled later by accepting "en" here and restoring the header switch.
- */
+/** The site is European Portuguese only; old ?lang=en links get the Portuguese page. */
 export function resolveLanguage(_value: unknown): Language {
   return "pt";
 }
@@ -316,161 +300,6 @@ export const content = {
     aboutIntro:
       "Em Odivelas, uma equipa que desenha, fabrica e instala, e clientes em toda a Grande Lisboa.",
   },
-  en: {
-    notFound: notFoundContent.en,
-    nav: ["Home", "What we do", "Projects", "Our story", "Contact"],
-    quote: "Request a quote",
-    tagline: "Made for your space",
-    heroLabel: "MADE IN OUR ODIVELAS WORKSHOP",
-    heroTitle: "Bespoke kitchens.",
-    heroItalic: "Made in our own workshop.",
-    heroDescription:
-      "For over 40 years we have designed, made and installed kitchens, cabinets and furniture to measure across Lisbon and Greater Lisbon. We also carry out full renovations.",
-    heroPrimary: "Request a free quote",
-    explore: "View projects",
-    heroImageLabel: "A real Armando Machado project",
-    trust: [
-      "Over 40 years in the workshop",
-      "Free 3D design",
-      "Made in Odivelas",
-      "Installation and after-sales",
-    ],
-    servicesLabel: "WHAT WE DO",
-    servicesTitle: "Made to measure, floor to ceiling.",
-    servicesLink: "View all services",
-    services: ["Bespoke kitchens", "Bespoke cabinets", "Bespoke furniture", "Renovations"],
-    serviceShort: [
-      "Kitchens designed to the centimetre, with built-in appliances and soft-close fittings.",
-      "Floor-to-ceiling cabinets, organised inside for what you keep.",
-      "Living room units, offices, wine walls and interior doors made for your space.",
-      "Full renovations of homes and spaces, from design to finished work.",
-    ],
-    serviceLong: [
-      "We design each kitchen from the real measurements of your home and the way you cook. Reinforced carcasses, soft-close fittings, built-in appliances and finishes of your choice.",
-      "Cabinets that run floor to ceiling, work around uneven walls and organise the interior with shelves, drawers and dividers in the right proportions.",
-      "Living room units, shelving, home offices, wine walls and interior doors, designed for the place they will live in.",
-      "We carry out general renovations, from a single room to a whole home, with the same team that designs and makes your furniture.",
-    ],
-    projectsLabel: "REAL PROJECTS",
-    projectsTitle: "Our work",
-    projectsLink: "View all projects",
-    projectView: "View project",
-    renderLabel: "3D design",
-    drawingLabel: "Technical drawing",
-    photoLabel: "Completed work",
-    designLabel: "FROM 3D DESIGN TO FINISHED WORK",
-    designTitle: "See your furniture before it exists.",
-    designCopy:
-      "Before we cut the first panel, we prepare the design in 3D. You choose materials, adjust measurements and approve the drawing at your own pace. Then the workshop makes exactly what you saw.",
-    designRenderCaption: "3D design",
-    designPhotoCaption: "Installation",
-    storyLabel: "ABOUT ARMANDO MACHADO",
-    storyTitle: "One workshop, over 40 years of kitchens.",
-    storyCopy:
-      "For more than four decades we have made kitchens, cabinets and furniture to measure in our Odivelas workshop. Over that time we have refined a method: technical rigour, carefully chosen materials and construction built to last.",
-    storyCopy2:
-      "Because we make everything ourselves, we control every measurement, joint, fitting and finish. The people who design your kitchen talk to the people who make and install it, and that is what makes the difference when it arrives in your home.",
-    storyLink: "Discover our story",
-    stats: [
-      { value: "40+", label: "years in our Odivelas workshop" },
-      { value: "100%", label: "made in our own workshop" },
-      { value: "3D", label: "design approved before we make it" },
-      { value: "1", label: "team from design to installation" },
-      { value: "€0", label: "for the visit, measuring and quote" },
-    ],
-    valuesLabel: "HOW WE BUILD",
-    valuesTitle: "Made for everyday use.",
-    values: [
-      {
-        title: "Stable structure",
-        copy: "Reinforced carcasses and sound joints, so cabinets hold their shape under weight and over the years.",
-      },
-      {
-        title: "Precision",
-        copy: "Measurements taken on site and panels cut in our own workshop, so everything fits first time.",
-      },
-      {
-        title: "Careful finishes",
-        copy: "Lacquers, woods and stones chosen with you and applied with attention to detail.",
-      },
-      {
-        title: "Ongoing support",
-        copy: "From the first drawing to installation and beyond, with after-sales support.",
-      },
-    ],
-    materialsLabel: "MATERIALS",
-    materialsTitle: "Materials we choose with you.",
-    materialsIntro:
-      "Samples taken from kitchens we have made. At the workshop we show you the options in person.",
-    processLabel: "HOW WE WORK",
-    processTitle: "Four steps, one team.",
-    steps: ["Visit and measuring", "3D design and quote", "Made in our workshop", "Installation"],
-    stepCopy: [
-      "We come to your home, take measurements and listen to what you need. No travel charge.",
-      "We design in 3D, choose materials with you and present a detailed quote.",
-      "We make every piece in Odivelas, with full control over measurements and finishes.",
-      "Our team installs and adjusts everything, and stays available after handover.",
-    ],
-    processCaption: "3D design prepared before production",
-    processDrawingCaption: "Technical drawing with the kitchen measurements before production",
-    ctaLabel: "NO-OBLIGATION QUOTE",
-    ctaTitle: "Tell us about your project.",
-    ctaCopy:
-      "Tell us what you want to make and where. If you have measurements or photographs of the space, send them: we book the visit and prepare the 3D design free of charge.",
-    talk: "Request a quote",
-    footerCopy:
-      "Kitchens, cabinets and furniture made to measure in our Odivelas workshop for over 40 years.",
-    find: "Find us",
-    contactsHeading: "Contact",
-    directions: "Get directions",
-    rights: "All rights reserved.",
-    contactWaysTitle: "Get in touch",
-    phoneLabel: "Phone",
-    emailLabel: "Email",
-    whatsapp: "Message us on WhatsApp",
-    contactSub: "Odivelas and Greater Lisbon",
-    contactCopy:
-      "We work mainly in Lisbon, Odivelas and neighbouring municipalities. Tell us where your project is and we will confirm the visit.",
-    nextTitle: "What happens next",
-    nextSteps: [
-      "Send us approximate measurements, photographs and references you like.",
-      "We book a visit to measure the space and talk with you.",
-      "You receive the 3D design and a detailed quote, with no obligation.",
-    ],
-    faqTitle: "Frequently asked questions",
-    faq: [
-      {
-        q: "How much does a quote cost?",
-        a: "Nothing. The visit, measuring, 3D design and quote are free and carry no obligation.",
-      },
-      {
-        q: "How do I prepare for my project?",
-        a: "Gather approximate measurements, photographs of the space and pictures of kitchens or furniture you like. That is enough to start the conversation.",
-      },
-      {
-        q: "Which materials can I choose?",
-        a: "Solid oak, walnut or beech, matt or high-gloss lacquered MDF, thermolaminates, natural stone and technical ceramic.",
-      },
-      {
-        q: "How long does it take?",
-        a: "It depends on the size of the project, the materials and the condition of the space. We give you the timing together with the quote.",
-      },
-    ],
-    close: "Close photograph",
-    previous: "Previous photograph",
-    next: "Next photograph",
-    projectIntro:
-      "Kitchens and furniture made in our workshop and installed in homes across Greater Lisbon. Select a project to see all its images.",
-    projectsCount: "projects",
-    serviceIntro:
-      "Kitchens, cabinets and furniture made to measure, designed in 3D, made in our workshop and installed by our own team.",
-    serviceExplore: "Explore this service",
-    serviceMaterialsTitle: "Some of our options",
-    aboutLabel: "ABOUT US",
-    aboutTitle: "Over 40 years making furniture to measure.",
-    aboutIntro:
-      "A workshop in Odivelas, a team that designs, makes and installs, and clients across Greater Lisbon.",
-  },
 };
 
 export const cookieConsentContent: Record<
@@ -522,32 +351,6 @@ export const cookieConsentContent: Record<
     mapDescription:
       "O mapa Google é conteúdo externo e pode receber dados técnicos do seu dispositivo. Pode carregá-lo agora ou abrir apenas as direções numa nova página.",
     loadMap: "Carregar mapa",
-  },
-  en: {
-    bannerTitle: "We value your privacy",
-    bannerDescription:
-      'We only use the storage needed to remember your choice. External content, such as Google Maps, only loads if you click "Accept all" or enable it under Customise.',
-    reject: "Reject",
-    accept: "Accept all",
-    customize: "Customise",
-    save: "Save choices",
-    close: "Close preferences",
-    preferencesTitle: "Privacy preferences",
-    preferencesDescription:
-      "Choose which optional resources may operate. You can change this decision at any time in the footer.",
-    necessaryTitle: "Necessary storage",
-    necessaryDescription:
-      "Stores the version, categories and date of your choice so the site can respect it on later visits.",
-    alwaysActive: "Always active",
-    externalMediaTitle: "External content",
-    externalMediaDescription:
-      "Allows the embedded Google map to load. The address and external directions link remain available without it.",
-    manage: "Manage cookies",
-    policyLink: "Cookie Policy",
-    mapTitle: "Map not loaded",
-    mapDescription:
-      "Google Maps is external content and may receive technical data from your device. You can load it now or open directions in a new page.",
-    loadMap: "Load map",
   },
 };
 
@@ -637,68 +440,6 @@ export const cookiePolicyContent: Record<
         purpose: "Mostrar a localização da loja num mapa interativo.",
         duration: "Definida pela Google. Só é usado depois de o autorizar.",
         category: "Conteúdo externo",
-      },
-    ],
-  },
-  en: {
-    metaTitle: "Cookie Policy",
-    metaDescription:
-      "Learn what Armando Machado stores on your device, when Google Maps is used and how to change your choice.",
-    label: "PRIVACY",
-    title: "Cookie Policy.",
-    intro:
-      "This website uses no advertising or analytics cookies. We only store your privacy choice and only load Google Maps if you allow it.",
-    updated: "Last updated: 9 November 2026",
-    sections: [
-      {
-        title: "What we use",
-        paragraphs: [
-          "To work, the site stores a single record in your browser with the choice you made in the cookie notice. It contains no name, email address or advertising identifier.",
-          "We use no analytics tools, social media pixels or advertising.",
-        ],
-      },
-      {
-        title: "Google Maps",
-        paragraphs: [
-          "The map on the contact page is provided by Google and only loads if you allow external content or select “Load map”. Google may then collect technical data from your device, such as your IP address, and set its own cookies under Google's privacy policy.",
-          "If you prefer not to load the map, the address remains visible and the “Get directions” link opens Google Maps in a new page.",
-        ],
-      },
-      {
-        title: "External links",
-        paragraphs: [
-          "When you open Google Maps or WhatsApp from this site, you use those services directly and their own privacy policies apply.",
-        ],
-      },
-      {
-        title: "How to change your choice",
-        paragraphs: [
-          "You can accept, reject or change your choice at any time with “Manage cookies” in the footer of every page. Your choice lasts six months; after that, or if this policy changes, we ask again.",
-        ],
-      },
-    ],
-    inventoryTitle: "Summary",
-    inventoryLabels: {
-      name: "What",
-      provider: "Provider",
-      purpose: "Purpose",
-      duration: "Duration",
-      category: "Category",
-    },
-    inventory: [
-      {
-        name: "Cookie choice (local storage)",
-        provider: "Armando Machado",
-        purpose: "Remember the choice you made in the cookie notice.",
-        duration: "Six months, or until you clear your browser data.",
-        category: "Necessary",
-      },
-      {
-        name: "Google Maps",
-        provider: "Google",
-        purpose: "Show the workshop's location on an interactive map.",
-        duration: "Set by Google. Only used after you allow it.",
-        category: "External content",
       },
     ],
   },

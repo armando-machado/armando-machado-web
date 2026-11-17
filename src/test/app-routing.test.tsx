@@ -53,7 +53,7 @@ describe("App routing", () => {
     });
 
     expect(router.matchRoutes("/cookies").at(-1)?.routeId).toBe("/cookies");
-    expect(router.buildLocation({ to: "/cookies", search: { lang: "en" } }).href).toBe(
+    expect(router.buildLocation({ to: "/cookies", search: { lang: "pt" } }).href).toBe(
       "/cookies",
     );
   });

@@ -1,6 +1,36 @@
 {
   "projects": [
     {
+      "slug": "bege-madeira",
+      "category": "kitchen",
+      "images": [
+        {
+          "src": "/src/content/projects/images/bege-madeira-1.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/bege-madeira-2.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/bege-madeira-3.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/bege-madeira-4.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/bege-madeira-5.webp",
+          "kind": "photo"
+        }
+      ],
+      "title": "Bege e madeira clara",
+      "type": "Cozinha em corredor",
+      "materials": "Frentes bege mate sem puxadores · madeira clara · bancada branca",
+      "summary": "Frentes em bege mate com puxador integrado, armários superiores em madeira clara e uma coluna com forno e micro-ondas encastrados. Um armário alto com prateleiras na porta aproveita cada centímetro."
+    },
+    {
       "slug": "oak-waterfall",
       "category": "kitchen",
       "images": [
@@ -17,18 +47,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Madeira e ilha efeito mármore",
-        "type": "Cozinha com ilha",
-        "materials": "Colunas em madeira · branco mate · bancada efeito mármore",
-        "summary": "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada."
-      },
-      "en": {
-        "title": "Wood and marble-effect island",
-        "type": "Island kitchen",
-        "materials": "Wood tall units · matt white · marble-effect worktop",
-        "summary": "A wall of wood tall units brings together a double oven, an American fridge and a wine cooler. Opposite, a white island whose marble-effect worktop runs down to the floor, with an integrated hob."
-      }
+      "title": "Madeira e ilha efeito mármore",
+      "type": "Cozinha com ilha",
+      "materials": "Colunas em madeira · branco mate · bancada efeito mármore",
+      "summary": "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada."
     },
     {
       "slug": "walnut",
@@ -39,18 +61,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Branco e nogueira",
-        "type": "Cozinha em L",
-        "materials": "Branco mate · nogueira · bancada escura",
-        "summary": "Uma cozinha em L que junta a luz das frentes brancas ao calor da nogueira, com armários superiores em duas profundidades."
-      },
-      "en": {
-        "title": "White and walnut",
-        "type": "L-shaped kitchen",
-        "materials": "Matt white · walnut · dark worktop",
-        "summary": "An L-shaped kitchen pairing bright white fronts with warm walnut, with wall units in two depths."
-      }
+      "title": "Branco e nogueira",
+      "type": "Cozinha em L",
+      "materials": "Branco mate · nogueira · bancada escura",
+      "summary": "Uma cozinha em L que junta a luz das frentes brancas ao calor da nogueira, com armários superiores em duas profundidades."
     },
     {
       "slug": "contemporary",
@@ -61,18 +75,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Lacado preto e branco",
-        "type": "Cozinha contemporânea",
-        "materials": "MDF lacado alto brilho · puxador integrado",
-        "summary": "Linhas contínuas, puxador integrado e o contraste do lacado preto e branco em alto brilho."
-      },
-      "en": {
-        "title": "Black and white lacquer",
-        "type": "Contemporary kitchen",
-        "materials": "High-gloss lacquered MDF · integrated handle",
-        "summary": "Continuous lines, an integrated handle and the contrast of black and white high-gloss lacquer."
-      }
+      "title": "Lacado preto e branco",
+      "type": "Cozinha contemporânea",
+      "materials": "MDF lacado alto brilho · puxador integrado",
+      "summary": "Linhas contínuas, puxador integrado e o contraste do lacado preto e branco em alto brilho."
     },
     {
       "slug": "island",
@@ -83,18 +89,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Ilha em tom pedra",
-        "type": "Cozinha com ilha",
-        "materials": "Branco mate · ilha em tom pedra · madeira",
-        "summary": "Uma ilha robusta em tom pedra que organiza a cozinha e abre o espaço para a sala."
-      },
-      "en": {
-        "title": "Stone-tone island",
-        "type": "Island kitchen",
-        "materials": "Matt white · stone-tone island · wood",
-        "summary": "A solid stone-tone island that organises the kitchen and opens it to the living area."
-      }
+      "title": "Ilha em tom pedra",
+      "type": "Cozinha com ilha",
+      "materials": "Branco mate · ilha em tom pedra · madeira",
+      "summary": "Uma ilha robusta em tom pedra que organiza a cozinha e abre o espaço para a sala."
     },
     {
       "slug": "oak-galley",
@@ -105,18 +103,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Corredor em branco e madeira",
-        "type": "Cozinha linear",
-        "materials": "Lacado branco · madeira · bancada escura",
-        "summary": "Uma cozinha linear que aproveita todo o comprimento do espaço, com gavetões, eletrodomésticos encastrados e uma faixa de madeira a aquecer o conjunto."
-      },
-      "en": {
-        "title": "White and wood galley",
-        "type": "Galley kitchen",
-        "materials": "White lacquer · wood · dark worktop",
-        "summary": "A galley kitchen that uses the full length of the room, with deep drawers, built-in appliances and a band of wood warming the whole."
-      }
+      "title": "Corredor em branco e madeira",
+      "type": "Cozinha linear",
+      "materials": "Lacado branco · madeira · bancada escura",
+      "summary": "Uma cozinha linear que aproveita todo o comprimento do espaço, com gavetões, eletrodomésticos encastrados e uma faixa de madeira a aquecer o conjunto."
     },
     {
       "slug": "white-l",
@@ -127,18 +117,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Branco mate com coluna",
-        "type": "Cozinha em L",
-        "materials": "Branco mate · bancada escura · eletrodomésticos encastrados",
-        "summary": "Frentes em branco mate sem puxadores aparentes, coluna até ao teto e eletrodomésticos encastrados à altura certa."
-      },
-      "en": {
-        "title": "Matt white with tall unit",
-        "type": "L-shaped kitchen",
-        "materials": "Matt white · dark worktop · built-in appliances",
-        "summary": "Matt white handleless fronts, a floor-to-ceiling tall unit and built-in appliances at the right height."
-      }
+      "title": "Branco mate com coluna",
+      "type": "Cozinha em L",
+      "materials": "Branco mate · bancada escura · eletrodomésticos encastrados",
+      "summary": "Frentes em branco mate sem puxadores aparentes, coluna até ao teto e eletrodomésticos encastrados à altura certa."
     },
     {
       "slug": "marble-island",
@@ -153,18 +135,10 @@
           "kind": "photo"
         }
       ],
-      "pt": {
-        "title": "Ilha e revestimento efeito mármore",
-        "type": "Cozinha com ilha",
-        "materials": "Lacado branco alto brilho · bancada e revestimento efeito mármore",
-        "summary": "Armários altos até ao teto, frentes sem puxadores e uma ilha com placa integrada. As colunas reúnem forno duplo e frigorífico americano numa só parede."
-      },
-      "en": {
-        "title": "Island and marble-effect surfaces",
-        "type": "Island kitchen",
-        "materials": "White high-gloss lacquer · marble-effect worktop and splashback",
-        "summary": "Wall units up to the ceiling, handleless fronts and an island with an integrated hob. Tall units bring a double oven and an American fridge together on one wall."
-      }
+      "title": "Ilha e revestimento efeito mármore",
+      "type": "Cozinha com ilha",
+      "materials": "Lacado branco alto brilho · bancada e revestimento efeito mármore",
+      "summary": "Armários altos até ao teto, frentes sem puxadores e uma ilha com placa integrada. As colunas reúnem forno duplo e frigorífico americano numa só parede."
     },
     {
       "slug": "wine-wall",
@@ -183,18 +157,10 @@
           "kind": "render"
         }
       ],
-      "pt": {
-        "title": "Garrafeira à medida",
-        "type": "Mobiliário por medida",
-        "materials": "Perfis pretos com vidro · madeira · garrafeiras em cruz",
-        "summary": "Uma parede inteira de arrumação para vinho, com portas em vidro, nichos em cruz e espaço para uma garrafeira climatizada. Foi desenhada em 3D antes de seguir para a fábrica."
-      },
-      "en": {
-        "title": "Bespoke wine wall",
-        "type": "Bespoke furniture",
-        "materials": "Black frames with glass · wood · cross-shaped wine racks",
-        "summary": "A full wall of wine storage with glass doors, cross racks and room for a wine cooler. It was designed in 3D before going to the workshop."
-      }
+      "title": "Garrafeira à medida",
+      "type": "Mobiliário por medida",
+      "materials": "Perfis pretos com vidro · madeira · garrafeiras em cruz",
+      "summary": "Uma parede inteira de arrumação para vinho, com portas em vidro, nichos em cruz e espaço para uma garrafeira climatizada. Foi desenhada em 3D antes de seguir para a fábrica."
     }
   ]
 }

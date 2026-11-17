@@ -38,7 +38,7 @@ collections:
             label: Projetos
             label_singular: Projeto
             widget: list
-            summary: "{{fields.slug}}"
+            summary: "{{fields.title}}"
             hint: Arraste para mudar a ordem. Use o botão de remover para apagar um projeto e depois guarde.
             fields:
               - name: slug
@@ -70,15 +70,7 @@ collections:
                     options:
                       - { label: Fotografia da obra, value: photo }
                       - { label: Desenho 3D, value: render }
-              - name: pt
-                label: Português
-                widget: object
-                fields: &copy
-                  - { name: title, label: Título, widget: string }
-                  - { name: type, label: Tipo de projeto, widget: string }
-                  - { name: materials, label: Materiais, widget: string }
-                  - { name: summary, label: Descrição, widget: text }
-              - name: en
-                label: English
-                widget: object
-                fields: *copy
+              - { name: title, label: Título, widget: string }
+              - { name: type, label: Tipo de projeto, widget: string }
+              - { name: materials, label: Materiais, widget: string }
+              - { name: summary, label: Descrição, widget: text }

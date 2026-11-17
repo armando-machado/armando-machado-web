@@ -15,19 +15,12 @@ import {
 } from "@/lib/site-content";
 export const Route = createFileRoute("/contact")({
   head: ({ match }) =>
-    match.search.lang === "en"
-      ? pageMeta(
-          "/contact",
-          "en",
-          "Contact & quotes",
-          "Start your bespoke furniture project with Armando Machado. Call, email or message us on WhatsApp, or visit our workshop in Odivelas. Free visit, quote and 3D design.",
-        )
-      : pageMeta(
-          "/contact",
-          "pt",
-          "Contactos e orçamentos",
-          "Comece o seu projeto com Armando Machado. Ligue, envie email ou mensagem pelo WhatsApp, ou visite a oficina em Odivelas. Visita, orçamento e projeto 3D sem custos.",
-        ),
+    pageMeta(
+      "/contact",
+      "pt",
+      "Contactos e orçamentos",
+      "Comece o seu projeto com Armando Machado. Ligue, envie email ou mensagem pelo WhatsApp, ou visite a oficina em Odivelas. Visita, orçamento e projeto 3D sem custos.",
+    ),
   component: Contact,
 });
 function Contact() {
@@ -101,9 +94,7 @@ export function ConsentMap({ lang }: { lang: Language }) {
       <iframe
         className="contact-map"
         src={mapsEmbedUrl}
-        title={
-          lang === "pt" ? "Mapa de Armando Machado em Odivelas" : "Map to Armando Machado in Odivelas"
-        }
+        title={"Mapa de Armando Machado em Odivelas"}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         allowFullScreen

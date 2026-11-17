@@ -9,19 +9,12 @@ import {
 import { content, pageMeta } from "@/lib/site-content";
 export const Route = createFileRoute("/projects")({
   head: ({ match }) =>
-    match.search.lang === "en"
-      ? pageMeta(
-          "/projects",
-          "en",
-          "Our projects",
-          "Real Armando Machado projects: island kitchens, walnut and lacquer finishes, marble-effect surfaces and a bespoke wine wall designed in 3D.",
-        )
-      : pageMeta(
-          "/projects",
-          "pt",
-          "Os nossos projetos",
-          "Projetos reais Armando Machado: cozinhas com ilha, nogueira e lacados, superfícies efeito mármore e uma garrafeira desenhada em 3D.",
-        ),
+    pageMeta(
+      "/projects",
+      "pt",
+      "Os nossos projetos",
+      "Projetos reais Armando Machado: cozinhas com ilha, nogueira e lacados, superfícies efeito mármore e uma garrafeira desenhada em 3D.",
+    ),
   component: Projects,
 });
 function Projects() {
