@@ -1,6 +1,28 @@
 {
   "projects": [
     {
+      "slug": "oak-waterfall",
+      "category": "kitchen",
+      "images": [
+        {
+          "src": "/src/content/projects/images/oak-waterfall-island.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/oak-waterfall-columns.webp",
+          "kind": "photo"
+        },
+        {
+          "src": "/src/content/projects/images/oak-waterfall-peninsula.webp",
+          "kind": "photo"
+        }
+      ],
+      "title": "Madeira e ilha efeito mármore",
+      "type": "Cozinha com ilha",
+      "materials": "Colunas em madeira · branco mate · bancada efeito mármore",
+      "summary": "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada."
+    },
+    {
       "slug": "bege-madeira",
       "category": "kitchen",
       "images": [
@@ -29,28 +51,6 @@
       "type": "Cozinha em corredor",
       "materials": "Frentes bege mate sem puxadores · madeira clara · bancada branca",
       "summary": "Frentes em bege mate com puxador integrado, armários superiores em madeira clara e uma coluna com forno e micro-ondas encastrados. Um armário alto com prateleiras na porta aproveita cada centímetro."
-    },
-    {
-      "slug": "oak-waterfall",
-      "category": "kitchen",
-      "images": [
-        {
-          "src": "/src/content/projects/images/oak-waterfall-island.webp",
-          "kind": "photo"
-        },
-        {
-          "src": "/src/content/projects/images/oak-waterfall-columns.webp",
-          "kind": "photo"
-        },
-        {
-          "src": "/src/content/projects/images/oak-waterfall-peninsula.webp",
-          "kind": "photo"
-        }
-      ],
-      "title": "Madeira e ilha efeito mármore",
-      "type": "Cozinha com ilha",
-      "materials": "Colunas em madeira · branco mate · bancada efeito mármore",
-      "summary": "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada."
     },
     {
       "slug": "oak-galley",
