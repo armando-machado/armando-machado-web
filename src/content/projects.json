@@ -53,48 +53,6 @@
       "summary": "Uma parede de colunas em madeira reúne forno duplo, frigorífico americano e garrafeira climatizada. Em frente, uma ilha branca com bancada efeito mármore até ao chão e placa integrada."
     },
     {
-      "slug": "walnut",
-      "category": "kitchen",
-      "images": [
-        {
-          "src": "/src/content/projects/images/kitchen-walnut.webp",
-          "kind": "photo"
-        }
-      ],
-      "title": "Branco e nogueira",
-      "type": "Cozinha em L",
-      "materials": "Branco mate · nogueira · bancada escura",
-      "summary": "Uma cozinha em L que junta a luz das frentes brancas ao calor da nogueira, com armários superiores em duas profundidades."
-    },
-    {
-      "slug": "contemporary",
-      "category": "kitchen",
-      "images": [
-        {
-          "src": "/src/content/projects/images/kitchen-contemporary.webp",
-          "kind": "photo"
-        }
-      ],
-      "title": "Lacado preto e branco",
-      "type": "Cozinha contemporânea",
-      "materials": "MDF lacado alto brilho · puxador integrado",
-      "summary": "Linhas contínuas, puxador integrado e o contraste do lacado preto e branco em alto brilho."
-    },
-    {
-      "slug": "island",
-      "category": "kitchen",
-      "images": [
-        {
-          "src": "/src/content/projects/images/kitchen-island.webp",
-          "kind": "photo"
-        }
-      ],
-      "title": "Ilha em tom pedra",
-      "type": "Cozinha com ilha",
-      "materials": "Branco mate · ilha em tom pedra · madeira",
-      "summary": "Uma ilha robusta em tom pedra que organiza a cozinha e abre o espaço para a sala."
-    },
-    {
       "slug": "oak-galley",
       "category": "kitchen",
       "images": [
