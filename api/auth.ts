@@ -1,4 +1,4 @@
-import { CSRF_COOKIE, PROVIDER, clientConfig, popupResponse, requestToken } from "./_github";
+import { CSRF_COOKIE, PROVIDER, clientConfig, popupResponse, requestToken } from "./_github.js";
 
 /** Starts sign-in: sends the user to GitHub with a one-time state value. */
 export function GET(request: Request) {

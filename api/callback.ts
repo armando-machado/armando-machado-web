@@ -1,4 +1,4 @@
-import { CSRF_COOKIE, popupResponse, requestToken } from "./_github";
+import { CSRF_COOKIE, popupResponse, requestToken } from "./_github.js";
 
 /** GitHub redirects here after the user approves; swaps the one-time code for a token. */
 export async function GET(request: Request) {
