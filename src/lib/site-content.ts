@@ -1,4 +1,3 @@
-import contemporary from "@/assets/kitchen-contemporary.webp";
 import wineWall from "@/assets/projects/wine-wall.webp";
 import wineWall3d from "@/assets/projects/wine-wall-3d.webp";
 import laundryKitchenDrawing from "@/assets/projects/laundry-kitchen-drawing.webp";
@@ -98,6 +97,16 @@ export const projects: readonly Project[] = loadProjects(
   }),
 );
 
+/*
+ * Section images on the home and about pages, taken from the CMS projects in their
+ * CMS order, so a project removed in the CMS also disappears there. Renders are skipped.
+ */
+export const projectCovers = projects.flatMap((p) => {
+  const photo = p.images.find((image) => image.kind === "photo");
+  return photo ? [{ ...photo, title: p.title }] : [];
+});
+export const coverAt = (i: number) => projectCovers[i % projectCovers.length];
+
 /** Undefined when the company has removed the project in the CMS. */
 export function projectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
@@ -109,8 +118,6 @@ export const designToWork = {
   processDrawing: { src: laundryKitchenDrawing, width: 1436, height: 939 },
   processRender: { src: laundryKitchen3d, width: 1600, height: 1132 },
 };
-
-export const heroImage = { src: contemporary, width: 1600, height: 1200 };
 
 export const materials = [
   {
@@ -255,6 +262,7 @@ export const content = {
     rights: "Todos os direitos reservados.",
     contactWaysTitle: "Fale connosco",
     phoneLabel: "Telefone",
+    mobileLabel: "Telemóvel",
     emailLabel: "Email",
     whatsapp: "Falar pelo WhatsApp",
     contactSub: "Odivelas e Grande Lisboa",
@@ -447,9 +455,11 @@ export const cookiePolicyContent: Record<
 
 /* Phone, WhatsApp and email confirmed by the site owner (2026-11-09). */
 export const contactDetails = {
-  phoneDisplay: "+351 964 035 260",
-  phoneHref: "tel:+351964035260",
+  phoneDisplay: "+351 219 311 148",
+  phoneHref: "tel:+351219311148",
   email: "moveismachado@hotmail.com",
+  mobileDisplay: "+351 964 035 260",
+  mobileHref: "tel:+351964035260",
 };
 export const whatsappUrl = "https://wa.me/351964035260";
 /** Opens Google Maps in route mode with the workshop as destination. */

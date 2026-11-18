@@ -38,6 +38,11 @@ function Contact() {
               <a href={contactDetails.phoneHref}>{contactDetails.phoneDisplay}</a>
             </li>
             <li>
+              <Phone aria-hidden="true" />
+              <span>{t.mobileLabel}</span>
+              <a href={contactDetails.mobileHref}>{contactDetails.mobileDisplay}</a>
+            </li>
+            <li>
               <Mail aria-hidden="true" />
               <span>{t.emailLabel}</span>
               <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>

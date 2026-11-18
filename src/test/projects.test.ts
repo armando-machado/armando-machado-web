@@ -1,4 +1,4 @@
-import { loadProjects, projects } from "@/lib/site-content";
+import { loadProjects, projectCovers, projects } from "@/lib/site-content";
 
 const copy = { title: "T", type: "Ty", materials: "M", summary: "S" };
 const entry = (over: Record<string, unknown> = {}) => ({
@@ -38,5 +38,12 @@ describe("projects from the CMS", () => {
 
   it("rejects duplicate slugs", () => {
     expect(() => loadProjects({ projects: [entry(), entry()] }, images)).toThrow(/duplicate/);
+  });
+
+  it("takes page images only from current projects, never renders", () => {
+    expect(projectCovers.map((c) => c.title)).toEqual(
+      projects.filter((p) => p.images.some((i) => i.kind === "photo")).map((p) => p.title),
+    );
+    expect(projectCovers.every((c) => c.kind === "photo")).toBe(true);
   });
 });

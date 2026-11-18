@@ -18,15 +18,13 @@ import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/lazy-image";
 import { useConsent } from "@/components/cookie-consent";
 import brandMark from "@/assets/brand-mark.svg?url&no-inline";
-import kitchenIsland from "@/assets/kitchen-island.webp";
 import marbleColumns from "@/assets/projects/marble-columns.webp";
-import whiteL from "@/assets/projects/white-l.webp";
 import {
   content,
   contactDetails,
   cookieConsentContent,
+  coverAt,
   designToWork,
-  heroImage,
   materials,
   projectBySlug,
   projects,
@@ -119,18 +117,20 @@ export function Eyebrow({ children, line = false }: { children: React.ReactNode;
 export function Hero() {
   const lang = useLanguage();
   const t = content[lang];
-  const featured = projectBySlug("contemporary");
+  const cover = coverAt(0);
   return (
     <>
       <section className="hero">
-        <LazyImage
-          src={heroImage.src}
-          alt={featured?.title ?? t.heroImageLabel}
-          width={heroImage.width}
-          height={heroImage.height}
-          loading="eager"
-          fetchPriority="high"
-        />
+        {cover && (
+          <LazyImage
+            src={cover.src}
+            alt={cover.title}
+            width={cover.width}
+            height={cover.height}
+            loading="eager"
+            fetchPriority="high"
+          />
+        )}
         <div className="hero-content">
           <h1>
             {t.heroTitle}
@@ -178,16 +178,19 @@ function TrustBand() {
 export function ServicesPreview() {
   const lang = useLanguage();
   const t = content[lang];
+  const cover = coverAt(1);
   return (
     <section className="section services-preview" id="craft">
       <figure className="services-visual">
-        <LazyImage
-          src={whiteL}
-          alt={projectBySlug("white-l")?.title ?? t.heroImageLabel}
-          loading="lazy"
-          width={1600}
-          height={1164}
-        />
+        {cover && (
+          <LazyImage
+            src={cover.src}
+            alt={cover.title}
+            loading="lazy"
+            width={cover.width}
+            height={cover.height}
+          />
+        )}
       </figure>
       <div className="services-body">
         <h2 className="section-title">{t.servicesTitle}</h2>
@@ -518,6 +521,7 @@ export function DesignToWork() {
   );
 }
 export function Story({ full = false, light = false }: { full?: boolean; light?: boolean }) {
+  const cover = coverAt(2);
   const lang = useLanguage();
   const t = content[lang];
   return (
@@ -534,14 +538,16 @@ export function Story({ full = false, light = false }: { full?: boolean; light?:
         )}
       </div>
       <figure className="story-visual">
-        <LazyImage
-          className="story-image"
-          src={kitchenIsland}
-          alt={projectBySlug("island")?.title ?? t.heroImageLabel}
-          loading="lazy"
-          width={1600}
-          height={1200}
-        />
+        {cover && (
+          <LazyImage
+            className="story-image"
+            src={cover.src}
+            alt={cover.title}
+            loading="lazy"
+            width={cover.width}
+            height={cover.height}
+          />
+        )}
       </figure>
     </section>
   );
