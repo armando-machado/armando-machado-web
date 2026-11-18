@@ -5,6 +5,9 @@ backend:
   name: github
   repo: armando-machado/armando-machado-web
   branch: main
+  # "Sign in with GitHub" goes through api/auth.ts and api/callback.ts on this site.
+  base_url: https://armandomachado.pt
+  auth_endpoint: api/auth
   commit_messages:
     update: "Atualizar projetos (CMS)"
     uploadMedia: "Carregar fotografia {{path}} (CMS)"
