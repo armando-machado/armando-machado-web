@@ -2,7 +2,7 @@ import { notFoundContent } from "./not-found-content";
 
 export type SeoLanguage = "pt";
 
-export const DEFAULT_SITE_URL = "https://lucas-botelho.github.io/moveis-machado";
+export const DEFAULT_SITE_URL = "https://armandomachado.pt";
 
 export const PUBLIC_PATHS = [
   "/",

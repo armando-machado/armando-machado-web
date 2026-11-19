@@ -15,18 +15,18 @@ import {
 } from "@/lib/seo-shared";
 
 describe("SEO URLs", () => {
-  it("uses the currently published GitHub Pages origin for default SEO URLs", () => {
-    expect(resolveSiteUrl()).toBe("https://lucas-botelho.github.io/moveis-machado");
+  it("uses the production domain for default SEO URLs", () => {
+    expect(resolveSiteUrl()).toBe("https://armandomachado.pt");
 
     const head = pageMeta("/contact", "pt", "Contactos", "Descrição");
     const canonical = head.links.find((link) => link.rel === "canonical");
 
-    expect(canonical?.href).toBe("https://lucas-botelho.github.io/moveis-machado/contact/");
+    expect(canonical?.href).toBe("https://armandomachado.pt/contact/");
     expect(createSitemapXml()).toContain(
-      "<loc>https://lucas-botelho.github.io/moveis-machado/contact/</loc>",
+      "<loc>https://armandomachado.pt/contact/</loc>",
     );
     expect(createRobotsTxt()).toContain(
-      "Sitemap: https://lucas-botelho.github.io/moveis-machado/sitemap.xml",
+      "Sitemap: https://armandomachado.pt/sitemap.xml",
     );
   });
 
