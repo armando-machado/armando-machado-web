@@ -75,7 +75,6 @@ export function createBusinessJsonLd(language: Language) {
     "@type": "HomeAndConstructionBusiness",
     "@id": `${SITE_URL}/#business`,
     name: "Armando Machado",
-    alternateName: "Móveis Machado",
     url: homeUrl,
     logo: publicFileUrl("logo.png"),
     image: OG_IMAGE.url,
@@ -103,7 +102,7 @@ export function createBusinessJsonLd(language: Language) {
       "Portas interiores",
       "Remodelações",
     ],
-    sameAs: ["https://www.instagram.com/cozinhasmoveismachado/"],
+    // Móveis Machado and its Instagram belong to a competitor: never link them here.
   };
 
   return {

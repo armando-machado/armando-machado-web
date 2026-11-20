@@ -7,6 +7,7 @@ import {
   SEO_LANGUAGES,
   buildLanguageAlternates,
   buildLanguageUrl,
+  createLlmsTxt,
   createNotFoundHtml,
   createRobotsTxt,
   createSitemapXml,
@@ -85,6 +86,14 @@ describe("SEO discovery files", () => {
     expect(sitemap).not.toContain("lang=en");
     expect(sitemap).not.toContain("/services/kitchens");
     expect(sitemap).not.toContain("/pt?");
+  });
+
+  it("generates an llms.txt with business facts and absolute page links", () => {
+    const llms = createLlmsTxt("https://example.com/base");
+
+    expect(llms.startsWith("# Armando Machado")).toBe(true);
+    expect(llms).toContain("Rua Vítor Cordon 6A, 2675-459 Odivelas");
+    expect(llms).toContain("](https://example.com/base/contact/)");
   });
 
   it("generates crawl rules with an absolute sitemap URL", () => {
