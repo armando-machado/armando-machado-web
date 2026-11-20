@@ -100,6 +100,43 @@ export function createRobotsTxt(siteUrl = DEFAULT_SITE_URL): string {
   return [`User-agent: *`, `Allow: /`, ``, `Sitemap: ${sitemapUrl.toString()}`, ``].join("\n");
 }
 
+/** Plain-language summary for AI assistants (llmstxt.org). Same facts as the business JSON-LD. */
+export function createLlmsTxt(siteUrl = DEFAULT_SITE_URL): string {
+  const page = (path: PublicPath) => buildLanguageUrl(path, "pt", siteUrl);
+
+  return `# Armando Machado
+
+> Fabrico próprio de cozinhas, roupeiros e móveis por medida em Odivelas, com projeto 3D, instalação e assistência pós-venda na Grande Lisboa. Mais de 40 anos de experiência.
+
+- Morada: Rua Vítor Cordon 6A, 2675-459 Odivelas, Portugal
+- Telefone: +351 219 311 148 · Telemóvel/WhatsApp: +351 964 035 260
+- Email: moveismachado@hotmail.com
+- Zona de atuação: Lisboa, Odivelas e Grande Lisboa
+- Orçamento e projeto 3D gratuitos, com visita ao local
+
+## Serviços
+
+- Cozinhas por medida
+- Roupeiros e armários por medida, do chão ao teto
+- Móveis por medida: sala, escritório, garrafeiras e portas interiores
+- Remodelações completas
+
+## Processo
+
+1. Visita gratuita ao local
+2. Projeto 3D e orçamento
+3. Fabrico na oficina própria em Odivelas
+4. Instalação e assistência pós-venda
+
+## Páginas
+
+- [O que fazemos](${page("/services")}): serviços e materiais
+- [Projetos](${page("/projects")}): trabalhos realizados, com fotografias reais
+- [Sobre nós](${page("/about")}): a história da empresa
+- [Contactos](${page("/contact")}): pedir orçamento
+`;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replaceAll("&", "&amp;")

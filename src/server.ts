@@ -4,6 +4,7 @@ import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { SITE_URL } from "./lib/seo";
 import {
+  createLlmsTxt,
   createRobotsTxt,
   createSitemapXml,
   getLegacyPortugueseRedirectUrl,
@@ -62,6 +63,12 @@ export default {
 
       if (requestPath.endsWith("/robots.txt")) {
         return new Response(createRobotsTxt(SITE_URL), {
+          headers: { "content-type": "text/plain; charset=utf-8" },
+        });
+      }
+
+      if (requestPath.endsWith("/llms.txt")) {
+        return new Response(createLlmsTxt(SITE_URL), {
           headers: { "content-type": "text/plain; charset=utf-8" },
         });
       }

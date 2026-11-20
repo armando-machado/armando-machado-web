@@ -2,6 +2,7 @@ import { loadEnv, type Plugin } from "vite";
 
 import {
   DEFAULT_SITE_URL,
+  createLlmsTxt,
   createNotFoundHtml,
   createRobotsTxt,
   createSitemapXml,
@@ -38,12 +39,20 @@ export function seoFilesPlugin(): Plugin {
           return;
         }
 
+        if (pathname === `${prefix}/llms.txt`) {
+          response.statusCode = 200;
+          response.setHeader("content-type", "text/plain; charset=utf-8");
+          response.end(createLlmsTxt(siteUrl));
+          return;
+        }
+
         next();
       });
     },
     generateBundle(_options, bundle) {
       this.emitFile({ type: "asset", fileName: "sitemap.xml", source: createSitemapXml(siteUrl) });
       this.emitFile({ type: "asset", fileName: "robots.txt", source: createRobotsTxt(siteUrl) });
+      this.emitFile({ type: "asset", fileName: "llms.txt", source: createLlmsTxt(siteUrl) });
       const stylesheet = Object.values(bundle).find(
         (asset) =>
           asset.type === "asset" &&
