@@ -15,7 +15,6 @@ import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "@/components/site";
 import { CookieConsentExperience, ConsentProvider } from "@/components/cookie-consent";
 import { content, resolveLanguage } from "@/lib/site-content";
-import brandMark from "@/assets/brand-mark.svg?url&no-inline";
 import brandIcon from "@/assets/brand-mark-32.png?url&no-inline";
 
 // Set VITE_GOOGLE_SITE_VERIFICATION to the token Search Console gives for the
@@ -100,7 +99,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: brandIcon, type: "image/png", sizes: "32x32" },
-      { rel: "icon", href: brandMark, type: "image/svg+xml", sizes: "any" },
+      // Google needs a square icon >= 48px at a stable URL
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico`, sizes: "48x48" },
+      {
+        rel: "icon",
+        href: `${import.meta.env.BASE_URL}favicon.svg`,
+        type: "image/svg+xml",
+        sizes: "any",
+      },
       { rel: "apple-touch-icon", href: `${import.meta.env.BASE_URL}apple-touch-icon.png` },
     ],
   }),
