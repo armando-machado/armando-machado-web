@@ -265,7 +265,7 @@ export const content = {
     mobileLabel: "Telemóvel",
     emailLabel: "Email",
     whatsapp: "Falar pelo WhatsApp",
-    contactSub: "Odivelas e Grande Lisboa",
+    contactSub: "Odivelas, Loures, Lisboa e Grande Lisboa",
     contactCopy:
       "Trabalhamos sobretudo em Lisboa, Odivelas e nos concelhos vizinhos. Diga-nos onde é o projeto e agendamos a deslocação.",
     nextTitle: "O que acontece a seguir",

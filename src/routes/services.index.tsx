@@ -7,8 +7,8 @@ export const Route = createFileRoute("/services/")({
     pageMeta(
       "/services",
       "pt",
-      "O que fazemos",
-      "Fabrico próprio de cozinhas, armários e móveis por medida em Odivelas. Do desenho à instalação.",
+      "Cozinhas e roupeiros por medida em Odivelas, Loures e Lisboa",
+      "Fabrico próprio de cozinhas, armários e móveis por medida em Odivelas, para Loures, Lisboa e toda a Grande Lisboa. Do desenho à instalação.",
     ),
   component: Services,
 });

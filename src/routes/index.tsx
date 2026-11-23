@@ -17,8 +17,8 @@ export const Route = createFileRoute("/")({
     pageMeta(
       "/",
       "pt",
-      "Cozinhas e mobiliário por medida",
-      "Há mais de 40 anos a desenhar, fabricar e instalar cozinhas, armários e móveis por medida em Odivelas. Visita, orçamento e projeto 3D sem custos.",
+      "Cozinhas por medida em Odivelas, Loures e Lisboa",
+      "Há mais de 40 anos a desenhar, fabricar e instalar cozinhas, armários e móveis por medida em Odivelas, Loures e Lisboa. Visita, orçamento e projeto 3D sem custos.",
     ),
   component: HomePage,
 });

@@ -111,7 +111,7 @@ export function createLlmsTxt(siteUrl = DEFAULT_SITE_URL): string {
 - Morada: Rua Vítor Cordon 6A, 2675-459 Odivelas, Portugal
 - Telefone: +351 219 311 148 · Telemóvel/WhatsApp: +351 964 035 260
 - Email: moveismachado@hotmail.com
-- Zona de atuação: Lisboa, Odivelas e Grande Lisboa
+- Zona de atuação: Odivelas, Loures, Lisboa e Grande Lisboa
 - Orçamento e projeto 3D gratuitos, com visita ao local
 
 ## Serviços

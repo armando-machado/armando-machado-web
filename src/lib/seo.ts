@@ -93,6 +93,7 @@ export function createBusinessJsonLd(language: Language) {
     areaServed: [
       { "@type": "City", name: "Lisboa" },
       { "@type": "City", name: "Odivelas" },
+      { "@type": "City", name: "Loures" },
       { "@type": "AdministrativeArea", name: "Grande Lisboa" },
     ],
     knowsAbout: [
